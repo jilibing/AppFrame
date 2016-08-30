@@ -15,6 +15,7 @@ import com.zihan.appframe.R;
 import com.zihan.appframe.biz.dbflow.DbActivity;
 import com.zihan.appframe.biz.restore.FragmentRetainDataActivity;
 import com.zihan.appframe.biz.tab.TabActivity;
+import com.zihan.appframe.utils.CpuManager;
 import com.zihan.appframe.utils.ScreenUtils;
 import com.zihan.appframe.utils.ToastUtils;
 
@@ -75,6 +76,7 @@ public class MainActivity extends BaseActivity {
         mRvFunction.setAdapter(adapter);
 
         ScreenUtils.showScreenInfo();
+        CpuManager.showAll();
     }
 
     private long firstTime = 0;

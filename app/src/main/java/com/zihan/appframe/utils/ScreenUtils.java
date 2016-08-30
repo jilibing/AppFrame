@@ -1,6 +1,8 @@
 package com.zihan.appframe.utils;
 
+import android.app.ActivityManager;
 import android.content.Context;
+import android.text.format.Formatter;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.WindowManager;
@@ -28,13 +30,21 @@ public class ScreenUtils {
         float h2 = screenHeightDip / xdpi;
         double inch = Math.sqrt(w2*w2 + h2*h2);
 
+        ActivityManager am = (ActivityManager) GloabalConfig.getContext().getSystemService(Context.ACTIVITY_SERVICE);
+        ActivityManager.MemoryInfo mi = new ActivityManager.MemoryInfo();
+        am.getMemoryInfo(mi); //mi.availMem; 当前系统的可用内存
+        String availMem = Formatter.formatFileSize(GloabalConfig.getContext(), mi.availMem);// 将获取的内存大小规格化
+        String totalMem = Formatter.formatFileSize(GloabalConfig.getContext(), mi.totalMem);
+
         Log.e("jlb", "density:" + density +
                     "\ndensityDPI:" + densityDPI +
                     "\nxdpi:"+xdpi +
                     "\nydpi:"+ydpi +
                     "\nscreenWidthDip:"+screenWidthDip +
                     "\nscreenHeightDip:"+screenHeightDip +
-                    "\ninch:" + inch
+                    "\ninch:" + inch +
+                    "\navailMem:" + availMem +
+                    "\ntotalMem:" + totalMem
                     );
     }
 }
