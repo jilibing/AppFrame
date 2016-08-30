@@ -15,6 +15,9 @@ public class GloabalConfig {
     }
 
     public static Context getContext() {
+        if(sContext == null) {
+            throw new NullPointerException("must be init in application");
+        }
         return sContext;
     }
 }
