@@ -7,16 +7,16 @@ import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.zihan.appframe.Base.BaseActivity;
 import com.zihan.appframe.Base.BaseRecyclerView.BaseRecyclerAdapter;
 import com.zihan.appframe.Base.BaseRecyclerView.Divider;
 import com.zihan.appframe.R;
 import com.zihan.appframe.biz.dbflow.DbActivity;
+import com.zihan.appframe.biz.photo.BitmapActivity;
 import com.zihan.appframe.biz.restore.FragmentRetainDataActivity;
 import com.zihan.appframe.biz.tab.TabActivity;
-import com.zihan.appframe.utils.CpuManager;
-import com.zihan.appframe.utils.ScreenUtils;
 import com.zihan.appframe.utils.ToastUtils;
 
 import java.util.ArrayList;
@@ -28,6 +28,9 @@ public class MainActivity extends BaseActivity {
 
     @BindView(R.id.rv_function)
     RecyclerView mRvFunction;
+
+    @BindView(R.id.iv_test)
+    ImageView iv_test;
 
     @Override
     protected int getContentView() {
@@ -42,6 +45,7 @@ public class MainActivity extends BaseActivity {
         functions.add("Fragment Tab Switch");
         functions.add("Dbflow demo");
         functions.add("Retained Fragment");
+        functions.add("bitmap compress");
 
         FunctionAdapter adapter = new FunctionAdapter(mRvFunction);
         adapter.refresh(functions);
@@ -63,6 +67,7 @@ public class MainActivity extends BaseActivity {
                         break;
 
                     case 3:
+                        launch(MainActivity.this, BitmapActivity.class);
                         break;
                 }
             }
@@ -75,8 +80,27 @@ public class MainActivity extends BaseActivity {
 
         mRvFunction.setAdapter(adapter);
 
-        ScreenUtils.showScreenInfo();
-        CpuManager.showAll();
+        //ScreenUtils.showScreenInfo();
+        //CpuManager.showAll();
+
+//        ImageLoaderUtils.getInstance().display(iv_test, "http://i2.buimg.com/4851/9db149e78d929bc8.png", new RequestListener() {
+//            @Override
+//            public boolean onException(Exception e, Object model, Target target, boolean isFirstResource) {
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onResourceReady(Object resource, Object model, Target target, boolean isFromMemoryCache, boolean isFirstResource) {
+//
+//                Bitmap bitmap_xxh = ((BitmapDrawable) iv_test.getDrawable()).getBitmap();
+//                int count_xxh = bitmap_xxh.getByteCount();
+//
+//                LogUtils.e("count_xxh count:"+count_xxh); // 65536
+//
+//                return false;
+//            }
+//        });
+
     }
 
     private long firstTime = 0;

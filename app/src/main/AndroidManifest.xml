@@ -22,9 +22,10 @@
         <activity
             android:name=".biz.tab.TabActivity"
             android:windowSoftInputMode="adjustUnspecified|stateHidden" />
-        <activity android:name=".biz.dbflow.DbActivity"></activity>
+        <activity android:name=".biz.dbflow.DbActivity" />
         <activity android:name=".biz.restore.FragmentRetainDataActivity" />
         <activity android:name=".biz.restore.FragmentRetainInstance" />
+        <activity android:name=".biz.photo.BitmapActivity"></activity>
     </application>
 
 </manifest>

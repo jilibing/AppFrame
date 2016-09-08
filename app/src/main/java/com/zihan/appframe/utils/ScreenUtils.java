@@ -12,6 +12,22 @@ import android.view.WindowManager;
  */
 public class ScreenUtils {
 
+    public static int getScreenWidth() {
+        DisplayMetrics dm = new DisplayMetrics();
+        WindowManager windowManager = (WindowManager) GloabalConfig.getContext().getSystemService(Context.WINDOW_SERVICE);
+        windowManager.getDefaultDisplay().getMetrics(dm);
+
+        return dm.widthPixels;
+    }
+
+    public static int getScreenHeight() {
+        DisplayMetrics dm = new DisplayMetrics();
+        WindowManager windowManager = (WindowManager) GloabalConfig.getContext().getSystemService(Context.WINDOW_SERVICE);
+        windowManager.getDefaultDisplay().getMetrics(dm);
+
+        return dm.heightPixels;
+    }
+
     public static void showScreenInfo() {
         // 获取屏幕密度（方法3）
         DisplayMetrics dm = new DisplayMetrics();

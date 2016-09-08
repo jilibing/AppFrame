@@ -1,7 +1,8 @@
 package com.zihan.appframe.utils;
 
+import android.util.Log;
+
 import com.orhanobut.logger.Logger;
-import com.zihan.appframe.BuildConfig;
 
 /**
  * 日志工具
@@ -9,41 +10,57 @@ import com.zihan.appframe.BuildConfig;
  */
 public class LogUtils {
     private static String tag = "jlb";
-    public static boolean debug = BuildConfig.DEBUG;
+    private static boolean isLogger = false;
+    public static boolean debug = true;//BuildConfig.DEBUG;
 
 
     public static void d(String msg) {
         if (debug) {
-            //Log.d(tag, msg);
-            Logger.d(msg);
+            if (isLogger) {
+                Logger.d(msg);
+            } else {
+                Log.d(tag, msg);
+            }
         }
     }
 
     public static void i(String msg) {
         if (debug) {
-            //Log.i(tag, msg);
-            Logger.i(msg);
+            if (isLogger) {
+                Logger.i(msg);
+            } else {
+                Log.i(tag, msg);
+            }
         }
     }
 
     public static void w(String msg) {
         if (debug) {
-            //Log.w(tag, msg);
-            Logger.w(msg);
+            if (isLogger) {
+                Logger.w(msg);
+            } else {
+                Log.w(tag, msg);
+            }
         }
     }
 
     public static void e(String msg) {
         if (debug) {
-            //Log.e(tag, msg);
-            Logger.e(msg);
+            if (isLogger) {
+                Logger.e(msg);
+            } else {
+                Log.e(tag, msg);
+            }
         }
     }
 
     public static void e(Throwable e) {
         if (debug) {
-            //Log.e(tag, e.getMessage());
-            Logger.e(e.getMessage());
+            if (isLogger) {
+                Logger.e(e.getMessage());
+            } else {
+                Log.e(tag, e.getMessage());
+            }
         }
     }
 }

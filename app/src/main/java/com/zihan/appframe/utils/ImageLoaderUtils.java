@@ -50,6 +50,8 @@ public class ImageLoaderUtils {
                 .placeholder(getPlaceHolder())
                 .listener(requestListener)
                 .into(imageView);
+
+
     }
 
     public void displayHead(ImageView imageView, String url) {
