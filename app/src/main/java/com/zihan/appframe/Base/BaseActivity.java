@@ -12,9 +12,11 @@ import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.zihan.appframe.R;
+import com.zihan.appframe.biz.loading.LoadingViewControl;
 import com.zihan.appframe.event.LoginEvent;
 import com.zihan.appframe.utils.EventBusUtils;
 
@@ -27,6 +29,9 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     private Dialog mDialog;
     private TextView tvContent;
+
+    private LoadingViewControl mLoadingViewControl;
+
 
     public static void launch(Context context, Class clazz) {
         Intent intent = new Intent(context, clazz);
@@ -43,6 +48,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(getContentView());
         //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        ViewGroup decorView = (ViewGroup) getWindow().getDecorView();
+        mLoadingViewControl = new LoadingViewControl(decorView);
+
         ButterKnife.bind(this);
         EventBusUtils.register(this);
         init(savedInstanceState);
@@ -54,6 +62,31 @@ public abstract class BaseActivity extends AppCompatActivity {
         hideLoading();
         super.onDestroy();
     }
+
+    public void showProgress() {
+        mLoadingViewControl.showProgress();
+    }
+
+    public void hideProgress() {
+        mLoadingViewControl.hideProgress();
+    }
+
+    public void showFailure() {
+        mLoadingViewControl.showFailureView();
+    }
+
+    public void hideFailure() {
+        mLoadingViewControl.hideFailureView();
+    }
+
+    public void showSuccess() {
+        mLoadingViewControl.showSucc();
+    }
+
+    public void hideSuccess() {
+        mLoadingViewControl.hideSucc();
+    }
+
 
     public void showLoading(final String msg) {
         runOnUiThread(new Runnable() {

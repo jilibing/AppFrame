@@ -16,10 +16,57 @@
         android:layout_height="wrap_content"
         />
 
-    <ImageView
-        android:id="@+id/iv_test"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scaleType="centerInside"
-        />
+        android:orientation="vertical"
+        >
+
+        <Button
+            android:id="@+id/bt_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="show progress"
+            />
+
+        <Button
+            android:id="@+id/bt_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="hide progress"
+            />
+
+        <Button
+            android:id="@+id/bt_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="show failure"
+            />
+
+        <Button
+            android:id="@+id/bt_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="hide failure"
+            />
+
+        <Button
+            android:id="@+id/bt_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="show succ"
+            />
+
+        <Button
+            android:id="@+id/bt_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="hide succ"
+            />
+
+    </LinearLayout>
+
+
+
+
 </RelativeLayout>

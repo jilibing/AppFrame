@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT"/>
 
     <application
         android:name=".FrameApplication"
@@ -24,7 +25,6 @@
             android:windowSoftInputMode="adjustUnspecified|stateHidden" />
         <activity android:name=".biz.dbflow.DbActivity" />
         <activity android:name=".biz.restore.FragmentRetainDataActivity" />
-        <activity android:name=".biz.restore.FragmentRetainInstance" />
         <activity android:name=".biz.photo.BitmapActivity"></activity>
     </application>
 

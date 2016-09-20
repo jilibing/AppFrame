@@ -7,7 +7,6 @@ import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
 import android.view.View;
-import android.widget.ImageView;
 
 import com.zihan.appframe.Base.BaseActivity;
 import com.zihan.appframe.Base.BaseRecyclerView.BaseRecyclerAdapter;
@@ -23,14 +22,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity {
 
     @BindView(R.id.rv_function)
     RecyclerView mRvFunction;
 
-    @BindView(R.id.iv_test)
-    ImageView iv_test;
+    @OnClick(R.id.bt_1)
+    void click1() {
+        showProgress();
+    }
+    @OnClick(R.id.bt_2)
+    void click2() {
+        hideProgress();
+    }
+    @OnClick(R.id.bt_3)
+    void click3() {
+        showFailure();
+    }
+    @OnClick(R.id.bt_4)
+    void click4() {
+        hideFailure();
+    }
+    @OnClick(R.id.bt_5)
+    void click5() {
+        showSuccess();
+    }
+    @OnClick(R.id.bt_6)
+    void click6() {
+        hideSuccess();
+    }
 
     @Override
     protected int getContentView() {
@@ -55,6 +77,7 @@ public class MainActivity extends BaseActivity {
             public void onItemClick(View view, Object data, int position) {
                 switch (position) {
                     case 0:
+                        //hideProgress();
                         launch(MainActivity.this, TabActivity.class);
                         break;
 
@@ -100,6 +123,10 @@ public class MainActivity extends BaseActivity {
 //                return false;
 //            }
 //        });
+
+        showProgress();
+
+        //showLoading("ddd");
 
     }
 
