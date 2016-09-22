@@ -41,7 +41,6 @@ dependencies {
     def domainDependencies = rootProject.ext.domainDependencies
 
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
 
     compile deps.butterknife
     apt deps.butterknife_compiler
@@ -51,6 +50,7 @@ dependencies {
     compile deps.bottom_bar
     compile deps.support_v4
     compile deps.logger
+    compile deps.appcompat
 
     //
     apt deps.dbflow_processor
@@ -63,4 +63,6 @@ dependencies {
 
 
     compile domainDependencies.dagger
+    compile 'com.android.support:support-v4:23.4.0'
+    testCompile 'junit:junit:4.12'
 }

@@ -13,6 +13,7 @@ import com.zihan.appframe.Base.BaseRecyclerView.BaseRecyclerAdapter;
 import com.zihan.appframe.Base.BaseRecyclerView.Divider;
 import com.zihan.appframe.R;
 import com.zihan.appframe.biz.dbflow.DbActivity;
+import com.zihan.appframe.biz.loading.LoadingActivity;
 import com.zihan.appframe.biz.photo.BitmapActivity;
 import com.zihan.appframe.biz.restore.FragmentRetainDataActivity;
 import com.zihan.appframe.biz.tab.TabActivity;
@@ -22,37 +23,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity {
 
     @BindView(R.id.rv_function)
     RecyclerView mRvFunction;
-
-    @OnClick(R.id.bt_1)
-    void click1() {
-        showProgress();
-    }
-    @OnClick(R.id.bt_2)
-    void click2() {
-        hideProgress();
-    }
-    @OnClick(R.id.bt_3)
-    void click3() {
-        showFailure();
-    }
-    @OnClick(R.id.bt_4)
-    void click4() {
-        hideFailure();
-    }
-    @OnClick(R.id.bt_5)
-    void click5() {
-        showSuccess();
-    }
-    @OnClick(R.id.bt_6)
-    void click6() {
-        hideSuccess();
-    }
 
     @Override
     protected int getContentView() {
@@ -68,6 +43,7 @@ public class MainActivity extends BaseActivity {
         functions.add("Dbflow demo");
         functions.add("Retained Fragment");
         functions.add("bitmap compress");
+        functions.add("loading");
 
         FunctionAdapter adapter = new FunctionAdapter(mRvFunction);
         adapter.refresh(functions);
@@ -77,7 +53,6 @@ public class MainActivity extends BaseActivity {
             public void onItemClick(View view, Object data, int position) {
                 switch (position) {
                     case 0:
-                        //hideProgress();
                         launch(MainActivity.this, TabActivity.class);
                         break;
 
@@ -91,6 +66,10 @@ public class MainActivity extends BaseActivity {
 
                     case 3:
                         launch(MainActivity.this, BitmapActivity.class);
+                        break;
+
+                    case 4:
+                        launch(MainActivity.this, LoadingActivity.class);
                         break;
                 }
             }
@@ -123,10 +102,6 @@ public class MainActivity extends BaseActivity {
 //                return false;
 //            }
 //        });
-
-        showProgress();
-
-        //showLoading("ddd");
 
     }
 

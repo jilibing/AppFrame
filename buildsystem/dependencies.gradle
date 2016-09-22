@@ -17,6 +17,7 @@ ext {
 
     deps = [
             gson : 'com.google.code.gson:gson:${gsonVersion}',
+            annotations : 'com.android.support:support-annotations:22.0.0',
             junit : 'junit:junit:4.12',
             appcompat : 'com.android.support:appcompat-v7:23.0.0',
             downloader : 'cn.aigestudio.downloader:Downloader:1.4.3',

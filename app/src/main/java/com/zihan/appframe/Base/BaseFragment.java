@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.zihan.appframe.R;
+import com.zihan.appframe.biz.loading.LoadingViewControl;
 import com.zihan.appframe.biz.tab.FragmentNavigation;
 import com.zihan.appframe.event.LoginEvent;
 import com.zihan.appframe.utils.EventBusUtils;
@@ -32,21 +33,29 @@ public abstract class BaseFragment extends Fragment {
     private TextView tvContent;
     protected Activity mActivity;
     protected FragmentNavigation mFragmentNavigation;
+    private LoadingViewControl mLoadingViewControl;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         EventBusUtils.register(this);
+
+        LogUtils.e("BaseFragment onCreateView "+container);
         return inflater.inflate(getContentView(), container, false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ButterKnife.bind(this, view);
-        init(view);
+        if(view instanceof ViewGroup) {
+            mLoadingViewControl = new LoadingViewControl(((ViewGroup) view));
+        }else {
+            throw new RuntimeException("the fragment view is not a viewgroup");
+        }
 
-        LogUtils.e("Fragment onViewCreated");
+        ButterKnife.bind(this, view);
+
+        init(view);
     }
 
     @Override
@@ -54,6 +63,30 @@ public abstract class BaseFragment extends Fragment {
         EventBusUtils.unregister(this);
         //ApiManager.getInstance().cancelRequestByTag(this);
         super.onDestroyView();
+    }
+
+    public void showProgress() {
+        mLoadingViewControl.show(LoadingViewControl.STATE_LOADING);
+    }
+
+    public void hideProgress() {
+        mLoadingViewControl.hide();
+    }
+
+    public void showFailure() {
+        mLoadingViewControl.show(LoadingViewControl.STATE_FAILURE);
+    }
+
+    public void hideFailure() {
+        mLoadingViewControl.hide();
+    }
+
+    public void showSuccess() {
+        mLoadingViewControl.show(LoadingViewControl.STATE_SUCCESS);
+    }
+
+    public void hideSuccess() {
+        mLoadingViewControl.hide();
     }
 
     @Override

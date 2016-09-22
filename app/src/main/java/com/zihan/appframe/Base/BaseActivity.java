@@ -64,27 +64,27 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     public void showProgress() {
-        mLoadingViewControl.showProgress();
+        mLoadingViewControl.show(LoadingViewControl.STATE_LOADING);
     }
 
     public void hideProgress() {
-        mLoadingViewControl.hideProgress();
+        mLoadingViewControl.hide();
     }
 
     public void showFailure() {
-        mLoadingViewControl.showFailureView();
+        mLoadingViewControl.show(LoadingViewControl.STATE_FAILURE);
     }
 
     public void hideFailure() {
-        mLoadingViewControl.hideFailureView();
+        mLoadingViewControl.hide();
     }
 
     public void showSuccess() {
-        mLoadingViewControl.showSucc();
+        mLoadingViewControl.show(LoadingViewControl.STATE_SUCCESS);
     }
 
     public void hideSuccess() {
-        mLoadingViewControl.hideSucc();
+        mLoadingViewControl.hide();
     }
 
 
