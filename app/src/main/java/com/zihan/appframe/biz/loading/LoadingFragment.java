@@ -5,6 +5,7 @@ import android.view.View;
 
 import com.zihan.appframe.Base.BaseFragment;
 import com.zihan.appframe.R;
+import com.zihan.appframe.utils.LogUtils;
 
 import butterknife.OnClick;
 
@@ -60,6 +61,8 @@ public class LoadingFragment extends BaseFragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
         }
+
+        LogUtils.e("LoadingFragment onCreate");
     }
 
     @Override

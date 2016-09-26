@@ -1,8 +1,6 @@
 package com.zihan.appframe.biz.loading;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 
 import com.zihan.appframe.Base.BaseActivity;
 import com.zihan.appframe.R;
@@ -43,9 +41,9 @@ public class LoadingActivity extends BaseActivity {
 
     @Override
     protected void init(Bundle savedInstanceState) {
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        Fragment fragment = new LoadingFragment();
-        ft.add(R.id.container, fragment, "");
-        ft.commit();
+//        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+//        Fragment fragment = new LoadingFragment();
+//        ft.add(R.id.container, fragment, "");
+//        ft.commit();
     }
 }

@@ -53,6 +53,8 @@ public abstract class BaseFragment extends Fragment {
             throw new RuntimeException("the fragment view is not a viewgroup");
         }
 
+        LogUtils.e("onViewCreated view:"+view);
+
         ButterKnife.bind(this, view);
 
         init(view);
